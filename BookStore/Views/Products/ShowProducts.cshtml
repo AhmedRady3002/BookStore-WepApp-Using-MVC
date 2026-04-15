@@ -1,0 +1,89 @@
+﻿@model List<ShowProductsViewModel>
+ <div class="dept1 d-flex justify-content-center align-items-center ">
+        <div class="text-center mt-4 title ">
+          <h1 class = "text-warning">Welcome To BookStore </h1>
+         <div class="words d-flex justify-content-center align-items-center mt-3 text-warning  ">
+          <h5 >Read.</h5>
+          <h5>Learn.</h5>
+          <h5>Enjoy.</h5>
+         </div>
+        <div class="mt-3">
+          <a class=" rounded-pill text-primary join fw-semibold" href="/UserAccount/Register">Join US</a>
+        </div>
+    </div>
+  </div>
+
+<div class="ShowProduct mt-5 ">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+                  <div class="col-lg-3 col-md-6 ">
+            <div class="box bg-white  ">
+          <img  class="img-fluid" src="/images/@item.ImageURL" alt="">
+         <h5 class="text-dark">@item.bookname </h5>
+             <p class="text-dark">  @item.Author_Name</p>
+            <div>    
+                    <a href="/Products/BookDetails/@item.bookid" class="btn btn-sm btn-outline-primary rounded-pill px-3 mb-1">  تفاصيل</a>
+            </div>
+       </div>
+       </div>
+        
+        }
+
+      </div>
+   </div>
+  <style>
+      .box
+      {
+           border-radius:10px;
+      }
+
+.dept1
+{
+     background-image: url(/images/خلفية_اخري.webp);
+    background-repeat: no-repeat;   /* يمنع التكرار */
+    background-size: cover;         /* تملى المساحة */
+    background-position: center;    /* تتوسّط */
+    height: 80vh; 
+    color: white;
+      
+}
+.dept1 h5
+{
+     
+      margin-right: 20px;
+}
+ .title h1
+{
+  font-family: 'Playfair Display', serif; 
+    letter-spacing: normal;   
+    word-spacing: normal;
+    line-height: 1.2;        
+    white-space: wrap;
+}
+ShowProduct
+{
+}
+
+.ShowProduct .box:hover
+{
+transform: translateY(-7px);
+
+transition: 0.2s;
+}
+
+.ShowProduct .box
+{
+    padding: 30px 30px 10px;
+    padding-top: 30px;
+    margin-top:2rem !important;
+}
+img 
+{
+    Width:100%;
+}
+.join:hover
+{
+color:green !important;
+}
+  </style>

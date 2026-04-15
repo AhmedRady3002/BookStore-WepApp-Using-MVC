@@ -1,0 +1,27 @@
+﻿@model AddRoleViewModel
+<div class="row">
+	<div class="col-md-6">
+		<form asp-action="SaveRole">
+			<div asp-validation-summary="All" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="RoleName"></label>
+				<input asp-for="RoleName" class="form form-control" />
+				<span asp-validation-for="RoleName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="mt-2 btn btn-success mb-2" />
+			</div>
+
+		</form>
+	</div>
+	<div>
+		<a asp-action="ShowProduct" asp-controller="Products">Back to Home</a>
+	</div>
+	@if (TempData["SuccessMessage"] != null)
+	{
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+			@TempData["SuccessMessage"]
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			</div>
+	}
+</div>

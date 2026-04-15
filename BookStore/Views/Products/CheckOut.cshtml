@@ -1,0 +1,91 @@
+﻿@model BookStore.ModelView.CustomerData
+
+@{
+    ViewData["Title"] = "CheckOut";
+    double totalprice = 0;
+    int shiping = 3;
+    
+}
+
+<h1>CheckOut</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SaveCheckOut">
+            <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+           <div class="form-group">
+                <label asp-for="Governate" class="control-label"></label>
+                <input asp-for="Governate" class="form-control" />
+                <span asp-validation-for="Governate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Markaz" class="control-label"></label>
+                <input asp-for="Markaz" class="form-control" />
+                <span asp-validation-for="Markaz" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="Village" class="control-label"></label>
+                <input asp-for="Village" class="form-control" />
+                <span asp-validation-for="Village" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Comfirm Order" class="btn btn-outline-primary mt-3 text-center mb-2 text-warning" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <div class="box lh-lg fw-bold bg-success p-2 text-white bg-opacity-75">
+            @foreach (var item in ViewBag.Cart)
+            {
+                <div>
+                                 <span class="price">@item.Price.ToString("0.00") $</span>
+                                 <span class="BookName">@item.BookName</span>
+
+                </div>
+                totalprice += item.TotalPrice;
+            }
+            @{
+                if (totalprice == 0)
+                    totalprice = 0;
+                    else
+                totalprice = totalprice + shiping;
+            }
+               <div class="total">
+                    <span>Total   :   </span>
+                     <span >@totalprice.ToString("0.00") $</span>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="SeeCart">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<style>
+.box div span
+{
+    padding:30px;
+}
+.total
+{
+        text-decoration:overline;
+}
+</style>

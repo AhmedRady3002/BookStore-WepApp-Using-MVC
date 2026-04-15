@@ -1,0 +1,39 @@
+﻿@model BookStore.Models.Author
+
+@{
+    ViewData["Title"] = "EditeAuthor";
+}
+
+<h1>EditeAuthor</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="SaveAuthorEdite">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+             <div class="form-group"> 
+                 <input type="hidden" asp-for="Id" class="form-control" />
+             </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="SaveEdit" class="btn btn-primary mt-3" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AuthorAdmin">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

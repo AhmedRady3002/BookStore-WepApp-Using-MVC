@@ -1,0 +1,51 @@
+﻿@model Order
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SaveOrderEdite" asp-controller="Admin" method="post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <!-- OrderID -->
+            <input asp-for="OrderID" type="hidden" />
+
+            <!-- OrderStatus -->
+           <div class="form-group">
+
+    <div>
+        <input type="radio" asp-for="OrderStatus" value="Processing" class="me-2"/>
+        <label class="fw-bold text-primary">قيد التجهيز</label>
+    </div>
+
+    <div>
+        <input type="radio" asp-for="OrderStatus" value="Shipped" class="me-2 " />
+        <label class="fw-bold text-warning">تم الشحن</label>
+    </div>
+
+    <div>
+        <input type="radio" asp-for="OrderStatus" value="Delivered" class="me-2" />
+        <label class="fw-bold text-success">وصل</label>
+    </div>
+
+    <div>
+        <input type="radio" asp-for="OrderStatus" value="Cancelled" class="me-2" />
+        <label class="fw-bold text-danger">ملغي</label>
+    </div>
+
+    <span asp-validation-for="OrderStatus" class="text-danger"></span>
+
+</div>
+            <div class="mt-2">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a asp-action="GetOrders" asp-controller="Admin" class="btn btn-primary">Back</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

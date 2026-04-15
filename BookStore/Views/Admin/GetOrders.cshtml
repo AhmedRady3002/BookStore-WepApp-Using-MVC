@@ -1,0 +1,72 @@
+﻿@model List<OrderAdminVM>
+
+<table class="table table-bordered table-hover table-info">
+    <thead>
+        <tr>
+            <th>رقم الطلب</th>
+            <th>العميل</th>
+            <th>العنوان</th>
+            <th>الكتاب</th>
+            <th>الكمية</th>
+            <th>الإجمالي</th>
+            <th>حالة الطلب</th>
+            <th>تعديل</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                     <td>@item.OrderID</td>
+
+                    <td>
+                    @item.CustomerName <br />
+                        📞 @item.CustomerPhone
+                    </td>
+
+                       <td>
+                    @item.Governate - @item.Markaz - @item.Village
+                    </td>
+
+                    <td>@item.BookName</td>
+
+                    <td>@item.QuantitySold</td>
+
+                    <td>@item.TotalPrice $</td>
+
+                          <td>
+                    @if (item.OrderStatus ==OrderStatus.Cancelled.ToString())
+                    {
+                          <span class="badge bg-danger">
+                            @item.OrderStatus
+                        </span>
+                    }
+                    else if (item.OrderStatus ==OrderStatus.Processing.ToString())
+                    {
+                                   <span class="badge bg-primary">
+                            @item.OrderStatus
+                                </span>
+                    }
+                    else if (item.OrderStatus == OrderStatus.Delivered.ToString())
+                    {
+                                  <span class="badge bg-success">
+                                 @item.OrderStatus
+                        </span>
+                    }
+                    else
+                    {
+                                       <span class="badge bg-warning">
+                                @item.OrderStatus
+                                </span>
+                    }
+                </td>
+                    <td>
+                        <a href="/Admin/EditOrder/@item.OrderID" class="btn btn-primary">تعديل </a>
+                    </td>
+
+                </tr>
+        }
+    </tbody>
+
+</table>

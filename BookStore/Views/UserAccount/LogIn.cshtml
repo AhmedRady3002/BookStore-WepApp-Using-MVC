@@ -1,0 +1,53 @@
+﻿@model UserLoginViewModel
+<div class="row">
+	<div class="col-md-12 d-flex justify-content-center align-items-center mt-5 lh-lg">
+		<form asp-action="SaveLogin">
+			<div asp-validation-summary="All" class="text-danger"></div>
+			<div class="form-group">
+			<label asp-for="UserName" class="user"></label>
+			<input asp-for="UserName" class="form form-control">
+					<span asp-validation-for="UserName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+			<label asp-for="Password"></label>
+			<input asp-for="Password" class="form form-control">
+			<span asp-validation-for="Password" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+			<label asp-for="RememberMe"></label>
+			<input asp-for="RememberMe" >
+			</div>
+	@* <div class="form-group ">
+				   <label>
+		     <input type="radio" asp-for="Role" value="User" />
+		          User
+	            </label>
+
+	<label>
+		<input type="radio" asp-for="Role" value="Admin" class="ms-3" />
+		Admin
+	</label>
+	</div> *@
+	<div>
+		<input type="submit"  value="Login" class=" btn btn-success " />
+	</div>
+
+		</form>
+	</div>
+
+</div>
+<div class="mt-2 d-flex justify-content-center align-items-center">
+	<a asp-action="Register" > Create User</a>
+</div>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
+<style>
+	.user
+	{
+		 word-spacing: 10px;
+	}
+</style>
+	

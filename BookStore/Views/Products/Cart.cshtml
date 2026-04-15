@@ -1,0 +1,93 @@
+﻿@model List<ContentOfCart>
+<h2 class="title_page text-white">Shoping Cart</h2>
+@{
+    double subtotal = 0;
+    int shipping = 3;
+    double Total = 0;
+}
+
+
+<div class="row">
+	<div class="col-md-8">
+        <table class="table table-hover table-warning">
+              <thead class="">
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                {
+                    <tr>
+                        <td><img src="/images/@item.ImagURL" alt="Alternate Text" class="me-2 " /> @item.BookName</td>
+                        <td>@item.Price</td>
+                        <td>@item.Quantity_Required</td>
+                        <td>@item.TotalPrice</td>
+                        <td><a href="/products/DeleteFromCart/@item.bookId" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                }
+
+                </tbody>
+
+    
+       </table>
+	</div>
+
+    <div class="col-md-4">
+        <div class="box  lh-lg fw-bold bg-success p-2 text-white bg-opacity-75">
+            <h2 class="boxtitle p-2 ">Order 'Summery</h2>
+            <div class="p-3">
+                <span>SubTotal :  </span>
+                @foreach (var item in Model)
+                {
+
+                    subtotal += @item.TotalPrice; 
+                }
+                 <span>@subtotal.ToString("0.00") $</span>
+            </div>
+             <div class="p-3">
+                 <span>Shipping : </span>
+                 <span>@shipping.ToString("0.00") $</span>
+
+             </div>
+
+              <div class="p-3">
+                @{
+                    if (subtotal == 0)
+                    {
+                        Total = 0;
+                    }
+                    else
+                    {
+                        Total = subtotal + shipping;
+                    }
+                }
+                  <span>Total : </span>
+                  <span>@Total.ToString("0.00") $</span>
+              </div>
+             
+
+              <div class="ms-auto p-2  ">
+                <a asp-action="CheckOut" asp-controller="Products" class="btn btn-outline-warning btn-success shadow-lg p-3 mb-5 bg-White-tertiary rounded fw-semibold">Proceed To CheckOut</a>
+             </div>
+          
+    </div>
+            <div class="text-center"">
+                <a href="/products/showproduct" class="btn btn-primary mt-3">Back To Home</a>
+            </div> 
+
+         </div>
+
+</div>
+
+
+<style>
+    img
+    {
+        width:100px;
+        height:100px;
+    }
+</style>

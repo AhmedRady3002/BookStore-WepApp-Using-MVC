@@ -1,0 +1,38 @@
+﻿@model List<ContentOfCart>
+<h2 class="text-white title">Order Confirmation</h2>
+<div class="BodyOFBag text-center mb-3">
+	<h3 class="text-success">Tahank You!</h3>
+     <h4 class="text-white">You Order Has been Placed</h4>
+	<h2>تم تأكيد الطلب رقم: #@ViewBag.OrderID</h2>
+</div>
+@foreach (var item in Model)
+{
+			<table class="table table-hover table-info ">
+				<tr>
+					<td><img src="/images/@item.ImagURL" /></td>
+					<td>@item.BookName</td>
+					<td>Qr :  @item.Quantity_Required</td>
+						<td>@item.Price.ToString("0.00") $</td>
+				</tr>
+			</table>
+
+}
+<style>
+	img {
+	max-width: 100px;   /* أقصى عرض */
+	max-height: 100px;  /* أقصى ارتفاع */
+	object-fit: contain; /* يحافظ على النسبة الأصلية للصورة */
+}
+table tr td
+{
+	vertical-align: middle;
+}
+.BodyOFBag h3,h4,h2
+{
+	margin-bottom:20px  ;
+}
+.BodyOFBag h4
+{
+	 word-spacing: 7px;
+}
+</style>

@@ -1,0 +1,72 @@
+﻿@model EditeBookViewModel
+
+@{
+    var categories = ViewBag.categories as List<Category> ?? new List<Category>();
+    SelectList CategoryList = new SelectList(categories, "Id", "Name");
+
+    var Authors = ViewData["Authors"] as List<Author> ?? new List<Author>();
+    SelectList AuthoList = new SelectList(Authors, "Id", "Name");
+}
+
+
+<form action="/admin/SaveBookEdited" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+       <input type="hidden" asp-for="BookID" />
+    </div>
+     <div class="form-group">
+        <label asp-for="BookName" ></label>
+        <input asp-for="BookName" class="form form-control">
+        <span asp-validation-for="BookName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" ></label>
+        <input asp-for="Price" class="form form-control">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AvailableQuantity" ></label>
+        <input asp-for="AvailableQuantity" class="form form-control">
+        <span asp-validation-for="AvailableQuantity" class="text-danger"></span>
+    </div>
+
+     <div class="form-group">
+        <label asp-for="Description" ></label>
+        <input asp-for="Description" class="form form-control">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+       <div class="form-group">
+        <label asp-for="ImageURL" ></label>
+        <input asp-for="ImageURL" class="form form-control">
+        <span asp-validation-for="ImageURL" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+                <label asp-for="date" class="control-label "></label>
+               <input type="date" id="date" name="date">
+                <span asp-validation-for="date" class="text-danger"></span>
+            </div>
+
+     <div class="form-group">
+       <select asp-items="CategoryList" asp-for="Categoryid">
+            <option value="0">Select Category</option>
+        </select>
+        <span asp-validation-for="Categoryid" class="text-danger"></span>
+    </div>
+     <div class="form-group">
+           <select asp-items="AuthoList" asp-for="authorIDs" multiple="multiple">
+        </select>
+        <span asp-validation-for="authorIDs" class="text-danger"></span>
+    </div>
+
+    <div class="mt-2">
+        <input type="submit" value="Save" class="btn btn-primary" />
+
+    </div>
+</form>
+
+@section Scripts {
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
