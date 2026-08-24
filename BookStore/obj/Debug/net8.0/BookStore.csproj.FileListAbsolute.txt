@@ -275,3 +275,4 @@ E:\BookStore\BookStore\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Scripting.reso
 E:\BookStore\BookStore\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 E:\BookStore\BookStore\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 E:\BookStore\BookStore\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+E:\BookStore\BookStore\obj\Debug\net8.0\BookStore.sourcelink.json

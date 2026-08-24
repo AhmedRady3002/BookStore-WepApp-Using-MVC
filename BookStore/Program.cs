@@ -1,4 +1,5 @@
 using BookStore.Models;
+using BookStore.ModelView;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -46,7 +47,8 @@ namespace BookStore
 			});
 
 
-			var app = builder.Build();
+			builder.Services.AddSignalR();
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())
@@ -59,6 +61,7 @@ namespace BookStore
 			app.UseSession();
 			app.UseAuthentication();
 			app.UseAuthorization();
+			app.MapHub<ChatHub>("/Chat");
 			app.MapControllerRoute(
 				name: "default",
 				pattern: "{controller=products}/{action=ShowProduct}/{id?}");

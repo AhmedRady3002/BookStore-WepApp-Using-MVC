@@ -1,0 +1,16 @@
+on:
+    push: 
+        branches: 
+            - main
+        paths: 
+            - "BookStore/**"
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout 
+              uses: actions/checkout@v4
+
+            - name: run test
+              run: npm test 
